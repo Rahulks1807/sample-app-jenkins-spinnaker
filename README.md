@@ -1,1 +1,1 @@
-# sample-app-jenkins-spinnaker
+# Sample App Jenkins and Spinnaker

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: flask-gke
+ labels:
+   app: python
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: python
+ template:
+   metadata:
+     labels:
+       app: python
+   spec:
+     containers:
+       - name: python-hello-world
+         image: gcr.io/cloudorbit/
+         imagePullPolicy: Always
+         ports:
+           - containerPort: 8080         
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-service
+  labels:
+    app: python
+spec:
+  selector:
+    app.kubernetes.io/name: python
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
