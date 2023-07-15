@@ -2,12 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Initial Stage') {
             steps {
-                echo 'Hello World'
-                sh '''
-                   docker info
-                '''
+                echo 'Hello This is a sample application'
             }
         }
         stage('Build') {
@@ -15,6 +12,14 @@ pipeline {
                 echo 'Build Dockerfile'
                 sh '''
                    docker build -t rahul1807/sample-blue-green-app:${BUILD_NUMBER} .
+                '''
+            }
+        }
+        stage('Push') {
+            steps {
+                echo 'Push Dockerfile'
+                sh '''
+                   docker push rahul1807/sample-blue-green-app:${BUILD_NUMBER}
                 '''
             }
         }
