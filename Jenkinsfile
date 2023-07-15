@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    parameters {
-        credentials(name: 'auth_key', description: 'authentication key', defaultValue: 'auth_key.json', credentialType: "Secret File", required: false )
-    }
     stages {
         stage('Initial Stage') {
             steps {
