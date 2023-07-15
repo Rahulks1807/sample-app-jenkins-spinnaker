@@ -19,7 +19,8 @@ pipeline {
             steps {
                 echo 'Push Dockerfile'
                 sh '''
-                   gcloud auth configure-docker us-docker.pkg.dev
+                   gcloud auth activate-service-account rohan-orbit  --key-file=${auth_key}
+                   gcloud auth configure-docker
                    docker push gcr.io/rohan-orbit/sample-app:${BUILD_NUMBER}
                 '''
             }
