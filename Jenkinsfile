@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Build Dockerfile'
                 sh '''
-                   docker build -t us-central1-docker.pkg.dev/rohan-orbit/internal:${BUILD_NUMBER} .
+                   docker build -t us-central1-docker.pkg.dev/rohan-orbit/internal/sample-app:${BUILD_NUMBER} .
                 '''
             }
         }
@@ -20,7 +20,7 @@ pipeline {
                 echo 'Push Dockerfile'
                 sh '''
                    gcloud auth configure-docker us-central1-docker.pkg.dev
-                   docker push us-central1-docker.pkg.dev/rohan-orbit/internal:${BUILD_NUMBER}
+                   docker push us-central1-docker.pkg.dev/rohan-orbit/internal/sample-app:${BUILD_NUMBER}
                 '''
             }
         }
