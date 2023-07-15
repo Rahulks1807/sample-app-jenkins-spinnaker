@@ -7,6 +7,15 @@ pipeline {
                 echo 'Hello World'
                 sh '''
                    docker info
+                   docker build .
+                '''
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Build Dockerfile'
+                sh '''
+                   docker build .
                 '''
             }
         }
