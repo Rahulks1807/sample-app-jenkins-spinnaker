@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Build Dockerfile'
                 sh '''
-                   docker build -t gcr.io/rohan-orbit/sample-app:${BUILD_NUMBER} .
+                   docker build -t gcr.io/rohan-orbit/sample-app:master-${BUILD_NUMBER} .
                 '''
             }
         }
