@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    parameters {
+        credentials(name: 'auth_key', description: 'authentication key', defaultValue: 'auth_key.json', credentialType: "Secret File", required: false )
+    }
     stages {
         stage('Initial Stage') {
             steps {
@@ -19,7 +21,7 @@ pipeline {
             steps {
                 echo 'Push Dockerfile'
                 sh '''
-                   gcloud auth activate-service-account spinnaker-sa@rohan-orbit.iam.gserviceaccount.com --key-file=${env.auth_key}
+                   gcloud auth activate-service-account spinnaker-sa@rohan-orbit.iam.gserviceaccount.com --key-file=${param.auth_key}
                    gcloud auth configure-docker
                    docker push gcr.io/rohan-orbit/sample-app:${BUILD_NUMBER}
                 '''
