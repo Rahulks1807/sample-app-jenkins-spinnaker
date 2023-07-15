@@ -21,7 +21,6 @@ pipeline {
             steps {
                 echo 'Push Dockerfile'
                 sh '''
-                   
                    gcloud auth configure-docker
                    docker push gcr.io/rohan-orbit/sample-app:${BUILD_NUMBER}
                 '''
