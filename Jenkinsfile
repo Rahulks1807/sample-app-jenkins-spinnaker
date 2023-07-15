@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Build Dockerfile'
                 sh '''
-                   docker build -t us-central1-docker.pkg.dev/rohan-orbit/internal/sample-app:${BUILD_NUMBER} .
+                   docker build -t gcr.io/rohan-orbit/sample-app:${BUILD_NUMBER} .
                 '''
             }
         }
