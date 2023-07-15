@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Build Dockerfile'
                 sh '''
-                   docker build -t rahul1807/sample-blue-green-app:${env.BUILD_NUMBER} .
+                   docker build -t rahul1807/sample-blue-green-app:${BUILD_NUMBER} .
                 '''
             }
         }
